@@ -1,0 +1,22 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Code Review 
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  check-quality:
+    runs-on: ubuntu-latest
+    name: A job to check my code quality
+    steps:
+    - uses: actions/checkout@v2
+    - uses: microsoft/ApplicationInspector-Action@v1
+    - uses: actions/upload-artifact@v2
+      with:
+        name: AppInspectorResults
+        path: AppInspectorResults.json
