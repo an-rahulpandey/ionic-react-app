@@ -17,6 +17,9 @@ jobs:
     - uses: actions/checkout@v2
     - uses: microsoft/ApplicationInspector-Action@v1
       with:
+        location-to-scan: src
+        output-format: json
+        file-path-exclusions: assets/*
         arguments: -x Verbose
     - uses: actions/upload-artifact@v2
       with:
